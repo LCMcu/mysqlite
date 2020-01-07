@@ -2,7 +2,7 @@
 #define __MYSQLITE_H
 
 #include <sqlite3.h>
-#include "proto.h"
+#include "../myinclude/proto.h"
 
 //表中插入数据
 int insert_data(sqlite3 *db, char *table, const DEVICE_DATA * device);
