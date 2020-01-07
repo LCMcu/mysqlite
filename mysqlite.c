@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     device.PM25=12;
     device.smog=200;
     sprintf(condition, "hum=66");
-    //insert_data(db, NULL, &device);
+    insert_data(db, NULL, &device);
     //查询数据   condition查询条件  []=[]
     select_data(db, device.device_name, condition, NULL);
     //修改数据库数据
