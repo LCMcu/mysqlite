@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
-#include "proto.h"
+#include "../myinclude/proto.h"
 #include "mysqlite.h"
 
 int creat_table(sqlite3 *db, char *table);
 static int sqlite_callback(void* para, int columnCount, char** columnValue, char** columnName);
 
+/*
 int main(int argc, char **argv)
 {
     sqlite3 *db = NULL;
@@ -52,6 +53,31 @@ int main(int argc, char **argv)
     sqlite3_close(db); //关闭数据库
     return ret;
 }
+*/
+
+//打开数据库
+int open_db(char *path_name, sqlite3 **db)
+{
+    int ret=0;
+    //打开指定的数据库文件,如果不存在将创建一个同名的数据库文件
+    ret = sqlite3_open("test.db", db);
+    if (ret)
+    {
+        fprintf(stderr, "Can't open database: %s/n", sqlite3_errmsg(*db));
+        sqlite3_close(*db);
+        return ret;
+    }
+    else
+        printf("open DB  ok \r\n");
+    return 0;
+}
+
+//关闭数据库
+int close_db(sqlite3 *db)
+{
+    return sqlite3_close(db);
+}
+
 //创建表
 int creat_table(sqlite3 *db, char *table)
 {
