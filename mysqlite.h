@@ -4,6 +4,9 @@
 #include <sqlite3.h>
 #include "../myinclude/proto.h"
 
+//查询标志位
+uint8_t SELECT_FLAG=0;
+
 //打开数据库
 int open_db(char *path_name, sqlite3 **db);
 
