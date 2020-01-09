@@ -8,6 +8,10 @@ SRC=mysqlite.c
 
 $(OBJ):$(SRC)
 	gcc -o $@  $^ $(LDFLAGS)
+	
+lib:
+	gcc $(SRC)  -fPIC -shared -o libmysqlite.so
+	cp ./libmysqlite.so ../mylib
 
 clean: 
 	rm ./$(OBJ)
